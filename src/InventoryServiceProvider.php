@@ -29,6 +29,10 @@ class InventoryServiceProvider extends ServiceProvider
     {
         include __DIR__.'/routes/web.php';
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
+        // publish css jss aseet in 
+        $this->publishes([
+            __DIR__.'/views/vendor' => base_path('public/olee/inventory'),
+        ]);
 
     }
 }
