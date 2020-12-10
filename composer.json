@@ -7,6 +7,7 @@
             "email": "oleetechs@gmail.com"
         }
     ],
+    "license": "MIT",
     "minimum-stability": "dev",
     "require": {},
     "autoload": {
