@@ -12,21 +12,8 @@
     "require": {},
     "autoload": {
         "psr-4": {
-            "olee\\inventory\\": "src/"
+          "olee\\inventory\\": "src/"
         }
-    },
-    "autoload-dev": {
-        "psr-4": {
-         
-            "olee\\inventory\\": "packages/olee/inventory/src/"
-        }
-    },
-    "extra": {
-      
-        "olee": {
-            "inventory": [
-                "olee\\inventory\\InventoryServiceProvider"
-            ]
-        }
-    }
+      }
+ 
 }
