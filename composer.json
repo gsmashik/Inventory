@@ -1,0 +1,12 @@
+{
+    "name": "olee/inventory",
+    "description": "This Is Inventory Module",
+    "authors": [
+        {
+            "name": "Olee Ahmmed Ashik",
+            "email": "oleetechs@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
