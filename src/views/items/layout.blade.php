@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
 <link rel="stylesheet" href="{{asset('olee/inventory/css/style.css')}}">
+<link rel="stylesheet" href="{{asset('olee/inventory/css/tabs.css')}}">
  @yield('css')
 </head>
 <body>
