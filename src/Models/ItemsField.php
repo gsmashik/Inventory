@@ -5,7 +5,8 @@ namespace olee\inventory\models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Items extends Model
+class ItemsField extends Model
 {
     use HasFactory;
+    protected $table ="itemsfields";
 }

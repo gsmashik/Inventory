@@ -1,7 +1,8 @@
 <?php
 
 namespace olee\inventory\controllers;
-use olee\inventory\models;
+use olee\inventory\models\Items;
+use olee\inventory\models\ItemsField;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
  
@@ -14,7 +15,9 @@ class ItemsController extends Controller
      */
     public function index()
     {
-        return view('inventory::items.index');
+        $itemsfield = ItemsField::where('Area', '=', 'top')->get();
+        
+        return view('inventory::items.index')->with(compact('itemsfield'));
 
     }
 
