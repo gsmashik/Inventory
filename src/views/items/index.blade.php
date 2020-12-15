@@ -21,18 +21,11 @@
             </tr>
             <tr >
 
-              <td> <label class="form-check-label font-weight-lighter small" for="1">  Price List </label></td>
-              <td>       
-                
-                <select class="form-control" id="sel1">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-            </select></td>
 
 
-         
+              <td> <label class="form-check-label font-weight-lighter small" for="1"> Bar Code </label></td>
+              <td><input class="form-control" type="text" name="" id="2"></td>
+     
                 <td> <label class="form-check-label font-weight-lighter small" for="1"> Item Type </label></td>
                 <td>
                   <select class="form-control" id="sel1">
@@ -51,6 +44,8 @@
                       <option>4</option>
                   </select>
                 </td>
+
+                
                 <td>
                   <div class="custom-control custom-checkbox">
                       <input type="checkbox" class="custom-control-input" id="customCheck3">
@@ -60,13 +55,22 @@
             </tr>
             <tr >
 
-              <td> <label class="form-check-label font-weight-lighter small" for="1"> Bar Code </label></td>
-              <td><input class="form-control" type="text" name="" id="2"></td>
-     
+              
                 <td> <label class="form-check-label font-weight-lighter small" for="1"> Unit Price </label></td>
                 <td>
                   <input class="form-control" type="text" name="" >
                 </td>
+
+                
+              <td> <label class="form-check-label font-weight-lighter small" for="1">  Price List </label></td>
+              <td>       
+                
+                <select class="form-control" id="sel1">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+            </select></td>
  
                 <td>
                   <div class="custom-control custom-checkbox">
@@ -87,10 +91,10 @@
       <!-- Tabs Area Start -->
       <div class="tab-container ">
         <ul class="nav nav-tabs" id="myTab">
-          <li class="active"><a data-target="#general" data-toggle="tab">General</a></li>
-          <li><a data-target="#profile" data-toggle="tab">Profile</a></li>
-          <li><a data-target="#messages" data-toggle="tab">Messages</a></li>
-          <li><a data-target="#settings" data-toggle="tab">Settings</a></li>
+          <li class="active"><a data-target="#general" data-toggle="tab" class="font-weight-lighter  small ">General</a></li>
+          <li><a data-target="#purchace" data-toggle="tab" class="font-weight-lighter  small " >Purchacing Data</a></li>
+          <li><a data-target="#sales" data-toggle="tab" class="font-weight-lighter  small " >Sales</a></li>
+          <li><a data-target="#inventory" data-toggle="tab" class="font-weight-lighter  small ">Inventory</a></li>
         
         </ul>
       
@@ -99,15 +103,61 @@
             <table class="table table-light">
               <tbody>
                 <tr>
-                  <td>Home </td>
-                  <td>Home </td>
+                  <td> <label class="form-check-label font-weight-lighter small" for="1"> Manufacturer  </label></td>
+                  <td>       
+                    
+                    <select class="form-control" id="sel1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select></td>
+
+                <td> <label class="form-check-label font-weight-lighter small" for="1"> Shipping Type </label></td>
+                <td>       
+                  
+                  <select class="form-control" id="sel1">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+              </select></td>
+
+              <td>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck5">
+                    <label class="custom-control-label font-weight-lighter small" for="customCheck5">Hold</label>
+                </div>
+              </td>
+
+              <td>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck4">
+                    <label class="custom-control-label font-weight-lighter small" for="customCheck4">Valid</label>
+                </div>
+              </td>
+
+
                 </tr>
               </tbody>
             </table>
             </div>
-          <div class="tab-pane" id="profile">Profile</div>
-          <div class="tab-pane" id="messages">Message</div>
-          <div class="tab-pane" id="settings">Settings</div>
+          <div class="tab-pane " id="purchace">
+
+            <table class="table table-light">
+              <tbody>
+                <tr>
+                  <td> <label class="form-check-label font-weight-lighter small" for="2" > Prefered Vendor </label> </td>
+                  <td><input class="form-control input-xs" type="text" name=""  id="2"></td>
+
+                  <td> <label class="form-check-label font-weight-lighter small" for="2" > Prefered Vendor </label> </td>
+                  <td><input class="form-control input-xs" type="text" name=""  id="2"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="tab-pane" id="sales">Message</div>
+          <div class="tab-pane " id="inventory">Settings</div>
         </div>
       </div>
       <!-- Tabs Area End -->
