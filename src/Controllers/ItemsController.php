@@ -15,9 +15,9 @@ class ItemsController extends Controller
      */
     public function index()
     {
-        $itemsfield = ItemsField::where('Area', '=', 'top')->get();
         
-        return view('inventory::items.index')->with(compact('itemsfield'));
+        
+        return view('inventory::items.index');
 
     }
 
