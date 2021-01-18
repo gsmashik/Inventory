@@ -2,7 +2,6 @@
 
 namespace olee\inventory\controllers;
 use olee\inventory\models\Items;
-use olee\inventory\models\ItemsField;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
  
@@ -39,7 +38,15 @@ class ItemsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+           // Form validation
+           $this->validate($request, [
+            'ItemCode' => 'required',
+            'ItemName' => 'required'
+           
+         ]);
+         Items::create($request->all());
+         return redirect()->route('items.index');
     }
 
     /**
@@ -48,9 +55,9 @@ class ItemsController extends Controller
      * @param  \App\Models\Items  $items
      * @return \Illuminate\Http\Response
      */
-    public function show(Items $items)
+    public function show()
     {
-        //
+        echo "jghj";
     }
 
     /**
