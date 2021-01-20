@@ -5,15 +5,9 @@
 <form action="{{route('items.store')}}" method="post">
 @csrf
 <div class="card">
+<div class="card-header border">Item Master Data  @include('inventory::items.searchbox') </div>
+
   <div class="card-body">
-  <div class="card-header border">Item Master Data      
-
-
-   
-   
-
-
-</div>
       <table class="table table-light table-bordered">
           <tbody>
               <!--   General Area -->
@@ -467,9 +461,18 @@
       
       <!-- Tabs Area End -->
       <div class="clearfix">
+ 
       <button class="btn btn-primary btn-2">ADD</button>  
+      <br>
+      @include('inventory::items.sessionmessage')
+
       </div>
       </form>
+
+      <div class="card-footer ">
+      
+       </div>
+
  @endsection
 
 @section('js')

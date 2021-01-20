@@ -16,7 +16,8 @@ class InventoryServiceProvider extends ServiceProvider
         $this->app->make('olee\inventory\controllers\ItemsController');
         $this->loadViewsFrom(__DIR__.'/views', 'inventory');
 
-
+        $this->app->make('olee\inventory\controllers\SalesOrderController');
+        $this->loadViewsFrom(__DIR__.'/views', 'inventory');
 
     }
 

@@ -17,26 +17,26 @@
 <div class="modal-body">
 <form 
 @if (Route::has('items.show'))
-action="{{ route('items.show') }}"
+action="{{ route('items.create') }}"
 @endif
 
 method="POST" role="search">
 @csrf
 <div class="form-group">
 <input type="text" class="form-control" name="title"
-placeholder="Search Mould No"> 
+placeholder="Search Item No"> 
 </div>
 <div class="form-group">
 <input type="text" class="form-control" name="description"
-placeholder="Search Description No"> 
+placeholder="Search Item Description "> 
 </div>
 <div class="form-group">
 <input type="text" class="form-control" name="letering"
-placeholder="Search letering No"> 
+placeholder="Search Item Group No"> 
 </div>
 <div class="form-group">
 <input type="text" class="form-control" name="buyers"
-placeholder="Search buyers No"> 
+placeholder="Search Item Type"> 
 </div>
 
 <div class="form-group">

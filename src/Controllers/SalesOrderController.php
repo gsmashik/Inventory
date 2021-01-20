@@ -1,11 +1,11 @@
 <?php
 
 namespace olee\inventory\controllers;
-use olee\inventory\models\Items;
+use olee\inventory\models\SalesOrder;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
  
-class ItemsController extends Controller
+class SalesOrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class ItemsController extends Controller
     {
         
         
-        return view('inventory::items.index');
+        return view('inventory::SalesOrder.index');
 
     }
 
@@ -49,16 +49,16 @@ class ItemsController extends Controller
 
 
      
-        $data =  Items::create( $validatedData );
+        $data =  SalesOrder::create( $validatedData );
 
-         return redirect()->route('items.index')->with('success', 'Item Added Successfully', 'data',$data);
+         return redirect()->route('SalesOrder.index')->with('success', 'Item Added Successfully', 'data',$data);
         
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Items  $items
+     * @param  \App\Models\SalesOrder  $SalesOrder
      * @return \Illuminate\Http\Response
      */
     public function show()
@@ -69,10 +69,10 @@ class ItemsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Items  $items
+     * @param  \App\Models\SalesOrder  $SalesOrder
      * @return \Illuminate\Http\Response
      */
-    public function edit(Items $items)
+    public function edit(SalesOrder $SalesOrder)
     {
         //
     }
@@ -81,10 +81,10 @@ class ItemsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Items  $items
+     * @param  \App\Models\SalesOrder  $SalesOrder
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Items $items)
+    public function update(Request $request, SalesOrder $SalesOrder)
     {
         //
     }
@@ -92,10 +92,10 @@ class ItemsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Items  $items
+     * @param  \App\Models\SalesOrder  $SalesOrder
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Items $items)
+    public function destroy(SalesOrder $SalesOrder)
     {
         //
     }
