@@ -39,7 +39,6 @@ class ItemsController extends Controller
     public function store(Request $request)
     {
 
-           // Form validation
 
            $validatedData =  $request->validate([
             'ItemCode' => 'required',
@@ -49,9 +48,13 @@ class ItemsController extends Controller
 
 
      
-        $data =  Items::create( $validatedData );
+        $data =  Items::create( $request->all() );
+ 
+            return redirect()->route('items.index')->with('success', 'Item Added Successfully', 'data',$data);
+  
+    
 
-         return redirect()->route('items.index')->with('success', 'Item Added Successfully', 'data',$data);
+         
         
     }
 

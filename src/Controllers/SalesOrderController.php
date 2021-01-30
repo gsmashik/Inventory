@@ -38,22 +38,27 @@ class SalesOrderController extends Controller
      */
     public function store(Request $request)
     {
-
+$sales = new SalesOrder;
            // Form validation
+        //    $validatedData = $request->validate([
+        //     "ItemCode.*"  => "required|string|min:1",
+        // ]);
+          
+            
 
-           $validatedData =  $request->validate([
-            'ItemCode' => 'required',
-            'ItemName' => 'required'
-        ]);
 
+        $data = $request->except(['_token']);
+$a  = count($data['ItemCode']);
 
-
-     
-        $data =  SalesOrder::create( $validatedData );
-
-         return redirect()->route('SalesOrder.index')->with('success', 'Item Added Successfully', 'data',$data);
-        
+    if(is_array($data))  {
+for ($i=0; $i < count($data) ; $i++) { 
+   foreach($data as $key => $value){
+        echo $key;
+   }
+}
     }
+
+           }
 
     /**
      * Display the specified resource.

@@ -5,7 +5,7 @@
 <form action="{{route('items.store')}}" method="post">
 @csrf
 <div class="card">
-<div class="card-header border">Item Master Data  @include('inventory::items.searchbox') </div>
+<div class="card-header border">Item Master Data   </div>
 
   <div class="card-body">
       <table class="table table-light table-bordered">

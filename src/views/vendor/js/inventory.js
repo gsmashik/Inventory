@@ -1,5 +1,34 @@
+$(document).on('click', '#addRowButton', function() {
+    var table = $('#rowtable'),
+        lastRow = table.find('tbody tr:first '),
+        rowClone = lastRow.clone();
+      
+        
+
+    table.find('tbody').append(rowClone).val("");
+    
+});
+    
 $(document).ready(function () {
 
+
+
+// For Datatable
+$('.itemrow').DataTable({
+    paging: false,
+    searching: false,
+    info: false,
+    "ordering": false,
+    colReorder : true,
+    rowReorder: true,
+    stateSave:  true
+   
+} );
+
+
+
+// for datepicker
+$( "#datepicker, #datepicker2,#datepicker3" ).datepicker();
 // For Data Table
         $('#table1').DataTable({  
              
@@ -50,6 +79,8 @@ $(document).ready(function () {
     })
 
 });
+
+
 
 
 

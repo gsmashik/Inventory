@@ -9,4 +9,5 @@ class SalesOrder extends Model
 {
     use HasFactory;
     protected $guarded = [ "_token" ];
+    protected $table = "ordr";
 }
