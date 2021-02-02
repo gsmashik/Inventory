@@ -49,14 +49,37 @@ $sales = new SalesOrder;
 
         $data = $request->except(['_token']);
 $a  = count($data['ItemCode']);
+$row = array();
+foreach( $data  as $key => $value){
+    if (is_array($value)) {
+        for ($i=0; $i <count($value); $i++) { 
+            $row[$key][] = $value[$i];
+    
+        }
+        }
 
-    if(is_array($data))  {
-for ($i=0; $i < count($data) ; $i++) { 
-   foreach($data as $key => $value){
-        echo $key;
-   }
-}
+    else{
+        echo $key."<br>";
     }
+}
+
+
+
+
+for ($i=0; $i < count($row['ItemCode']) ; $i++) { 
+  foreach($row as $key => $value){
+    $sales->$key = $row[$key ][$i];
+  }
+  $sales->save();
+ 
+}
+
+
+
+
+
+
+    // print_r($row);
 
            }
 
