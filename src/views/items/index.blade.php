@@ -7,15 +7,21 @@
 <div class="card">
 <div class="card-header border">Item Master Data   </div>
 
+
+
   <div class="card-body">
+
       <table class="table table-light table-bordered">
           <tbody>
               <!--   General Area -->
 
               <!-- 1st Row -->
               <tr>
+            
                   <td>
                       <label class="form-check-label font-weight-lighter small"> Item Code </label>
+                        @error('ItemCode')<i class="fa fa-asterisk fa-xs text-danger " aria-hidden="true"></i>  @enderror
+                                   
                   </td>
                   <td>
                       <input class="form-control" type="text" name="ItemCode" />
@@ -38,6 +44,8 @@
               <tr>
                   <td>
                       <label class="form-check-label font-weight-lighter small" > Item Description </label>
+                      @error('ItemName')<i class="fa fa-asterisk fa-xs text-danger " aria-hidden="true"></i>  @enderror
+
                   </td>
                   <td>
                       <input class="form-control input-xs" type="text" name="ItemName"  />

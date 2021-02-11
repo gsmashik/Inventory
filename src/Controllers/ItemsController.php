@@ -43,15 +43,24 @@ class ItemsController extends Controller
            $validatedData =  $request->validate([
             'ItemCode' => 'required',
             'ItemName' => 'required'
-        ]);
+           ],
+           [ 'ItemCode.required' => 'Item Code Is Required', 'ItemName.required' => 'Item Name Is Required']
+        );
 
-
-
-     
-        $data =  Items::create( $request->all() );
- 
-            return redirect()->route('items.index')->with('success', 'Item Added Successfully', 'data',$data);
+       
+       
   
+
+     try {
+
+        $data =  Items::create( $request->all() );
+        
+       
+
+     } catch (\Throwable $th) {
+        return redirect()->route('items.index')->with('error', 'Problem With Connection ');
+     }
+      
     
 
          

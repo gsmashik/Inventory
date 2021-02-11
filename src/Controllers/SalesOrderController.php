@@ -2,9 +2,10 @@
 
 namespace olee\inventory\controllers;
 use olee\inventory\models\SalesOrder;
+use olee\inventory\models\SalesOrderRow;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
- 
+use DB;
 class SalesOrderController extends Controller
 {
     /**
@@ -39,15 +40,16 @@ class SalesOrderController extends Controller
     public function store(Request $request)
     {
 $sales = new SalesOrder;
-           // Form validation
-        //    $validatedData = $request->validate([
-        //     "ItemCode.*"  => "required|string|min:1",
-        // ]);
+$salesrow = new SalesOrderRow;
+           
+           $validatedData = $request->validate([
+            "ItemCode.*"  => "required|string|min:1",
+        ]);
           
             
 
 
-        $data = $request->except(['_token']);
+ $data = $request->except(['_token']);
 $a  = count($data['ItemCode']);
 $row = array();
 foreach( $data  as $key => $value){
@@ -59,8 +61,10 @@ foreach( $data  as $key => $value){
         }
 
     else{
-        echo $key."<br>";
+        $sales->$key =  $value;
+       
     }
+
 }
 
 
@@ -68,14 +72,24 @@ foreach( $data  as $key => $value){
 
 for ($i=0; $i < count($row['ItemCode']) ; $i++) { 
   foreach($row as $key => $value){
-    $sales->$key = $row[$key ][$i];
+    $salesrow->$key = $row[$key ][$i];
   }
-  $sales->save();
- 
+  
 }
 
 
 
+try {
+
+    $salesrow->save();
+    $sales->save();
+    return redirect()->route('salesOreder.index')->with('success', 'Item Added Successfully');
+ 
+ } catch (\Exception $e) {
+ 
+   return redirect()->route('salesOreder.index')->with('error', 'ISome Error Have ');
+
+ }
 
 
 
@@ -89,8 +103,39 @@ for ($i=0; $i < count($row['ItemCode']) ; $i++) {
      * @param  \App\Models\SalesOrder  $SalesOrder
      * @return \Illuminate\Http\Response
      */
+
+    public function search(Request $request)
+    {
+
+        $data = $request->except(['_token']);
+
+        foreach( $data  as $key => $value){
+            if (is_array($value)) {
+             
+                }
+        
+            else{
+                if(!empty($value)) {
+
+                    $sales = SalesOrder::where($key, '=', $value);
+            
+                } 
+
+                
+               
+            }
+        
+        }
+
+        return $sales->get();
+
+     
+    }
+
     public function show()
     {
+        
+     
         echo "jghj";
     }
 

@@ -1,7 +1,7 @@
 @extends('inventory::items.layout')
 
 @section('content')
-<form action="{{route('salesOreder.store')}}" method="post">
+<form action="{{route('salesOreder.find')}}" method="post">
                     @csrf
 <div class="card">
     <div class="card-header">
@@ -32,7 +32,7 @@
                   <!-- 2ND Row -->
                   <tr>
                   <td>
-                      <label class="form-check-label font-weight-lighter small"> Coustomer Name </label>
+                      <label class="form-check-label font-weight-lighter small"> CardName </label>
                   </td>
                   <td>
                   <input class="form-control" type="text" name="CardName" />
@@ -64,8 +64,8 @@
                       <label class="form-check-label font-weight-lighter small"> Contact Person </label>
                   </td>
                   <td>
-                  <select class="form-control " name="ContctCode">
-                                    <option value="f">---</option>
+                  <select class="form-control " name="CntctCode">
+                                    <option value="1">---</option>
                                 </select>
                
                   </td>
@@ -86,7 +86,7 @@
                <!-- 4th Row -->
                <tr>
                   <td>
-                      <label class="form-check-label font-weight-lighter small"> Pi Name  </label>
+                      <label class="form-check-label font-weight-lighter small"> BP Reference No.  </label>
                   </td>
                   <td>
                   <input class="form-control" type="text"  name="NumAtCard" />
@@ -109,7 +109,9 @@
                  <tr>
                   <td>
                   <select class="form-control " name="CurSource">
-                                    <option value="$">BP Currency</option>
+                                    <option value="C">BP Currency </option>
+                                    <option value="L">Local Currency</option>
+                                    <option value="S">System Currency</option>
                                 </select>
                   </td>
                   <td>
@@ -192,21 +194,21 @@
                               </td>
                            
                               <td>
-                                  <input class="form-control" type="text" name="ItemName[]" />
+                                  <input class="form-control" type="text" name="Dscription[]" />
                               </td>
 
                               <td>
-                                  <input class="form-control" type="text" name="qty[]" />
+                                  <input class="form-control" type="text" name="Quantity[]" />
                               </td>
                               <td>
-                                <input class="form-control" type="text"  />
+                                <input class="form-control" type="text" name="Price[]" />
                             </td>
                             <td>
-                                <input class="form-control" type="text"  />
+                                <input class="form-control" type="text" name="DiscPrcnt[]" />
                             </td>
                         
                             <td>
-                                <input class="form-control" type="text"  />
+                                <input class="form-control" type="text"  name="VatPrcnt[]" />
                             </td>
                             <td>
                                 <input class="form-control" type="text"  />
@@ -247,14 +249,14 @@
         <div class="col">
 
             <div class="row">
-                <div class="col mini-box"> <label class="form-check-label font-weight-lighter small"> Marketing Person </label></div>
+                <div class="col mini-box"> <label class="form-check-label font-weight-lighter small"> Sales Employee </label></div>
                 <div class="col mini-box">  
                     <select class="form-control " name="Slpcode">
-                    <option value="h">---</option>
+                    <option value="1">---</option>
                 </select></div>
               </div>
           <div class="row">
-            <div class="col mini-box">                      <label class="form-check-label font-weight-lighter small"> Owner </label>
+            <div class="col mini-box">                      <label class="form-check-label font-weight-lighter small"> Document Owner </label>
     </div>
             <div class="col mini-box">                      <input class="form-control" type="text" name="OwnerCode" />
     </div>

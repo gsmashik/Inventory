@@ -16,9 +16,21 @@ class CreateOrdrTable extends Migration
         Schema::create('ordr', function (Blueprint $table) {
             $table->bigIncrements('DocEntry')->autoIncrement();
             // 1st Row
-            $table->string("ItemCode",50)->comment("Item No.");
-            $table->mediumText('ItemName',100)->comment("Item Description");
-            $table->decimal('qty',19,6)->nullable()->comment("Qty");
+
+            $table->integer("CardCode")->comment("CardCode");
+            $table->integer("DocNum")->comment("Document Number ");
+            $table->string("CardName",50)->comment("CardName");
+            $table->integer("CntctCode")->comment("	Contact Person ");
+            $table->date('Docdate')->comment("Document Date ");
+            $table->date('DocDueDate')->comment("Due Date");
+            $table->date('TaxDate')->comment("Release Date");
+            $table->integer("NumAtCard")->comment("BP Reference No.");
+            $table->enum('CurSource', ['C', 'L','S'])->nullable()->comment('Fixed Item');
+            $table->integer("SlpCode")->comment("Sales Employee");
+            $table->integer("OwnerCode")->comment("Document Owner");
+            $table->text('Comments')->nullable()->comment('Item Remarks');
+
+        
             
           
             $table->timestamps();
