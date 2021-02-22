@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form action="{{route('items.store')}}" method="post">
+<form action="{{route('items.find')}}" method="post">
 @csrf
 <div class="card">
 <div class="card-header border">Item Master Data   </div>
@@ -24,17 +24,17 @@
                                    
                   </td>
                   <td>
-                      <input class="form-control" type="text" name="ItemCode" />
+                      <input class="form-control" type="text" name="ItemCode" value="@isset($output[0]){{$output[0]->ItemCode }} @endisset" />
                   </td>
                   <td>
                       <label class="form-check-label font-weight-lighter small"> Bar Code </label>
                   </td>
                   <td>
-                      <input class="form-control" type="text" name="CodeBars"  />
+                      <input class="form-control" type="text" name="CodeBars"  value="@isset($output[0]){{$output[0]->CodeBars }} @endisset" />
                   </td>
                   <td>
                       <div class="custom-control custom-checkbox">
-                          <input type="checkbox" class="custom-control-input" name="InvntItem" id="InvntItem" />
+                          <input type="checkbox" class="custom-control-input" name="InvntItem" id="InvntItem"  value="@isset($output[0]){{$output[0]->InvntItem }} @endisset"/>
                           <label class="custom-control-label font-weight-lighter small" for="InvntItem">Inventory Item</label>
                       </div>
                   </td>
@@ -47,14 +47,17 @@
                       @error('ItemName')<i class="fa fa-asterisk fa-xs text-danger " aria-hidden="true"></i>  @enderror
 
                   </td>
+                 
+                  
                   <td>
-                      <input class="form-control input-xs" type="text" name="ItemName"  />
+                      <input class="form-control input-xs" type="text" name="ItemName" value="@isset($output[0]){{$output[0]->ItemName }} @endisset" />
                   </td>
                   <td>
                       <label class="form-check-label font-weight-lighter small" > Item Group </label>
                   </td>
                   <td>
-                      <select class="form-control" id="sel1" name="ItmsGrpCod">
+                      <select class="form-control" id="sel1" name="ItmsGrpCod" value="@isset($output[0]){{$output[0]->ItmsGrpCod }} @endisset">
+                            <option></option>
                           <option>1</option>
                           <option>2</option>
                           <option>3</option>
@@ -63,7 +66,7 @@
                   </td>
                   <td>
                       <div class="custom-control custom-checkbox">
-                          <input type="checkbox" class="custom-control-input" name="SellItem" id="SellItem" />
+                          <input type="checkbox" class="custom-control-input" name="SellItem" id="SellItem" value="@isset($output[0]){{$output[0]->ItmsGrpCod }} @endisset"/>
                           <label class="custom-control-label font-weight-lighter small" for="SellItem">Sales Item</label>
                       </div>
                   </td>
@@ -75,14 +78,15 @@
                       <label class="form-check-label font-weight-lighter small"> Foreign Name </label>
                   </td>
                   <td>
-                      <input class="form-control" type="text" name="FrgnName" />
+                      <input class="form-control" type="text" name="FrgnName" value="@isset($output[0]){{$output[0]->FrgnName }} @endisset"/>
                   </td>
                   <td>
                       <label class="form-check-label font-weight-lighter small"> Item Type </label>
                   </td>
                   <td>
                       <select class="form-control" name="ItemType" id="sel1">
-                          <option>1</option>
+                      <option></option>
+                          <option >1</option>
                           <option>2</option>
                           <option>3</option>
                           <option>4</option>
@@ -90,7 +94,7 @@
                   </td>
                   <td>
                       <div class="custom-control custom-checkbox">
-                          <input type="checkbox" class="custom-control-input" name="PrchseItem" id="PrchseItem" />
+                          <input type="checkbox" class="custom-control-input" name="PrchseItem" value="@isset($output[0]){{$output[0]->PrchseItem }} @endisset" id="PrchseItem" />
                           <label class="custom-control-label font-weight-lighter small" for="PrchseItem">Purchased Item</label>
                       </div>
                   </td>
@@ -101,13 +105,14 @@
                       <label class="form-check-label font-weight-lighter small"> Unit Price </label>
                   </td>
                   <td>
-                      <input class="form-control" type="text" />
+                      <input class="form-control" type="text"  />
                   </td>
                   <td>
                       <label class="form-check-label font-weight-lighter small"> Price List </label>
                   </td>
                   <td>
                       <select class="form-control" id="sel1">
+                      <option></option>
                           <option>1</option>
                           <option>2</option>
                           <option>3</option>
@@ -187,6 +192,7 @@
                             </td>
                             <td>
                                 <select class="form-control " name="TaxType">
+                                <option></option>
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
@@ -272,6 +278,7 @@
                           </td>
                           <td>
                               <select class="form-control" id="CstGrpCode" name="CstGrpCode">
+                              <option></option>
                                   <option>1</option>
                                   <option>2</option>
                                   <option>3</option>
@@ -365,6 +372,7 @@
                     </td>
                     <td>
                         <select class="form-control" id="GLMEthod" name="GLMEthod">
+                            <option></option>
                             <option>WareHouse</option>
                             <option>Item Group</option>
                             <option>Item Level</option>

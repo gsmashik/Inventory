@@ -14,9 +14,9 @@ class ItemsController extends Controller
      */
     public function index()
     {
+        $output = array();
         
-        
-        return view('inventory::items.index');
+        return view('inventory::items.index',['output' => $output]);
 
     }
 
@@ -54,7 +54,7 @@ class ItemsController extends Controller
      try {
 
         $data =  Items::create( $request->all() );
-        
+        return redirect()->route('items.index')->with('success', 'Opreation SuccessFull ');
        
 
      } catch (\Throwable $th) {
@@ -65,6 +65,46 @@ class ItemsController extends Controller
 
          
         
+    }
+
+
+    public function find(Request $request)
+    {
+        $output = array();
+        $data = $request->except(['_token']);
+
+        foreach( $data  as $key => $value){
+            if (is_array($value)) {
+                for ($i=0; $i <count($value); $i++) { 
+                    
+            
+                }
+                }
+        
+            else{
+
+                if(!empty($value)) {
+
+                    $output= Items::where($key, 'like', '%'.$value.'%')->get() ;
+            
+                }
+
+            
+               
+            }
+        
+        }
+
+
+        
+        // echo $output[0]['DocEntry'];
+        return view('inventory::items.index',['output' => $output]);
+  
+        // $mould = Items::where('Itemcode', '=', "as")->get();
+        // return $output;
+        // return view('inventory::items.index', ['output' => $output]);
+        // return redirect()->route('items.index')->compact(output);
+
     }
 
     /**
