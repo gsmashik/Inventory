@@ -2,11 +2,13 @@
 
 @section('content')
 
-<form action="{{route('items.find')}}" method="post">
+<form action="{{route('items.find')}}" method="post" id="myform" onsubmit="return confirm('Do you really want to submit the form?');">
 @csrf
 <div class="card">
-<div class="card-header border">Item Master Data   </div>
+<div class="card-header border">Item Master Data  <i class="fa  fa-binoculars  find"></i> </div>
 
+<!--  সার্চের রেজাল্ট এর কয়টা রও (ROW) -->
+@isset($output){{  count($output) }} @endisset
 
 
   <div class="card-body">
@@ -478,9 +480,11 @@
       <!-- Tabs Area End -->
       <div class="clearfix">
  
-      <button class="btn btn-primary btn-2">ADD</button>  
+      <button class="btn btn-primary btn-2" >ADD</button>  
       <br>
       @include('inventory::items.sessionmessage')
+      @include('inventory::items.modal')
+
 
       </div>
       </form>

@@ -97,9 +97,19 @@ class ItemsController extends Controller
 
 
         
+       
+if (count($output) == 1) {
+    return view('inventory::items.index',['output' => $output]);
+} elseif(count($output) == 0) {
+    return view('inventory::items.index',['output' => $output]);
+}
+elseif(count($output)>1) {
+    return view('inventory::items.index',['moreoutput' => $output]);
+}
+
+
         // echo $output[0]['DocEntry'];
-        return view('inventory::items.index',['output' => $output]);
-  
+        // 
         // $mould = Items::where('Itemcode', '=', "as")->get();
         // return $output;
         // return view('inventory::items.index', ['output' => $output]);
@@ -124,9 +134,21 @@ class ItemsController extends Controller
      * @param  \App\Models\Items  $items
      * @return \Illuminate\Http\Response
      */
-    public function edit(Items $items)
+    public function edit($id)
     {
-        //
+        $output = array();
+        $where = array('DocEntry' => $id);
+        $output[0] = Items::where($where)->first();
+
+        if (count($output) == 1) {
+            return view('inventory::items.index',['output' => $output]);
+        } elseif(count($output) == 0) {
+            return view('inventory::items.index',['output' => $output]);
+        }
+        elseif(count($output)>1) {
+            return view('inventory::items.index',['moreoutput' => $output]);
+        }
+
     }
 
     /**

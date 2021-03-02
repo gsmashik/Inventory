@@ -1,7 +1,7 @@
 @extends('inventory::items.layout')
 
 @section('content')
-<form action="{{route('salesOreder.find')}}" method="post">
+<form action="{{route('salesOreder.store')}}" method="post" >
                     @csrf
 <div class="card">
     <div class="card-header">
@@ -75,7 +75,7 @@
                   <td>
                              
 
-                  <input class="form-control" type="text" id="datepicker" name="Docdate" />
+                  <input class="form-control datepick" type="text" id="datepicker" name="Docdate" />
 
                             </td>
          
@@ -99,7 +99,7 @@
                   <td>
                              
 
-                  <input class="form-control" type="text" id="datepicker2" name="DocDueDate" />
+                  <input class="form-control datepick" type="text" id="datepicker2" name="DocDueDate" />
 
                             </td>
          
@@ -128,7 +128,7 @@
                   <td>
                              
 
-                  <input class="form-control" type="text" id="datepicker3" name="TaxDate" />
+                  <input class="form-control datepick" type="text" id="datepicker3" name="TaxDate" />
 
                             </td>
          
