@@ -1,6 +1,6 @@
 <?php
 
-namespace olee\Inventory;
+namespace Olee\Inventory;
 
 use Illuminate\Support\ServiceProvider;
 

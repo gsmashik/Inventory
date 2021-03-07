@@ -1,12 +1,22 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use olee\inventory\controllers\SalesOrderController; 
-use olee\inventory\controllers\ItemsController; 
+use Olee\Inventory\Controllers\SalesOrderController; 
+use Olee\Inventory\Controllers\ItemsController; 
 
 Route::get('test', 'olee\inventory\controllers\ItemsController@index');
 
+
 Route::group(['middleware' => ['web']], function () {
+
+
+    Route::get('/find',  function () {
+        // Validate the request...
+    
+        return redirect()->back()->with('message', 'IT WORKS!');
+    })->name('find');
+
+
     Route::resource('items', olee\inventory\controllers\ItemsController::class);
     Route::post('items/find', [ItemsController::class, 'find'])->name('items.find');
 

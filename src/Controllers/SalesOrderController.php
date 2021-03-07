@@ -1,8 +1,8 @@
 <?php
 
-namespace olee\inventory\controllers;
-use olee\inventory\models\SalesOrder;
-use olee\inventory\models\SalesOrderRow;
+namespace Olee\Inventory\Controllers;
+use Olee\Inventory\Models\SalesOrder;
+use Olee\Inventory\Models\SalesOrderRow;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;

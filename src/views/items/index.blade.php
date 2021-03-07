@@ -1,14 +1,21 @@
-@extends('inventory::items.layout')
+@extends('inventory::layouts.layout')
 
 @section('content')
+@extends('inventory::layouts.menubar')
 
-<form action="{{route('items.find')}}" method="post" id="myform" onsubmit="return confirm('Do you really want to submit the form?');">
+<!-- onsubmit="return confirm('Do you really want to submit the form?');" -->
+<form action="{{route('items.find')}}" method="post" id="myform" >
 @csrf
 <div class="card">
-<div class="card-header border">Item Master Data  <i class="fa  fa-binoculars  find"></i> </div>
+<div class="card-header border">Item Master Data  </div>
 
 <!--  সার্চের রেজাল্ট এর কয়টা রও (ROW) -->
 @isset($output){{  count($output) }} @endisset
+@if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session()->get('message') }}
+    </div>
+@endif
 
 
   <div class="card-body">

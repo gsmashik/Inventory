@@ -1,6 +1,6 @@
 <?php
 
-namespace olee\inventory\models;
+namespace Olee\Inventory\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

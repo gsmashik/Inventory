@@ -1,7 +1,7 @@
 <?php
 
-namespace olee\inventory\controllers;
-use olee\inventory\models\Items;
+namespace Olee\Inventory\Controllers;
+use Olee\Inventory\Models\Items;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
  
@@ -15,8 +15,9 @@ class ItemsController extends Controller
     public function index()
     {
         $output = array();
+        $route= 'store';
         
-        return view('inventory::items.index',['output' => $output]);
+        return view('inventory::items.index',['output' => $output,'route'=> $route]);
 
     }
 
@@ -158,9 +159,20 @@ elseif(count($output)>1) {
      * @param  \App\Models\Items  $items
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Items $items)
+    public function update(Request $request, $id)
     {
-        //
+        $output = array();
+        $where = array('DocEntry' => $id);
+        $output[0] =  Items::where($where)->first()->update(Request::all());
+
+        if (count($output) == 1) {
+            return view('inventory::items.index',['output' => $output]);
+        } elseif(count($output) == 0) {
+            return view('inventory::items.index',['output' => $output]);
+        }
+        elseif(count($output)>1) {
+            return view('inventory::items.index',['moreoutput' => $output]);
+        }
     }
 
     /**

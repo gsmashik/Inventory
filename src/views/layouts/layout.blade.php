@@ -15,6 +15,7 @@
  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
  <link rel='stylesheet' href='https://cdn.datatables.net/colreorder/1.3.1/css/colReorder.dataTables.min.css'>
 <link rel="stylesheet" href="{{asset('olee/inventory/css/style.css')}}">
+<link rel="stylesheet" href="{{asset('olee/inventory/css/menubar.css')}}">
 <link rel="stylesheet" href="{{asset('olee/inventory/css/tabs.css')}}">
 
  @yield('css')
