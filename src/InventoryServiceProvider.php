@@ -13,10 +13,10 @@ class InventoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->make('olee\inventory\controllers\ItemsController');
+        $this->app->make('Olee\Inventory\controllers\ItemsController');
         $this->loadViewsFrom(__DIR__.'/views', 'inventory');
 
-        $this->app->make('olee\inventory\controllers\SalesOrderController');
+        $this->app->make('Olee\Inventory\controllers\SalesOrderController');
         $this->loadViewsFrom(__DIR__.'/views', 'inventory');
 
     }
