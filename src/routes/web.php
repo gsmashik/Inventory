@@ -19,6 +19,7 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::resource('items', olee\inventory\controllers\ItemsController::class);
     Route::post('items/find', [ItemsController::class, 'find'])->name('items.find');
+    Route::get('items/{btn}', [ItemsController::class, 'show'])->name('items.fbtn');
 
 
     Route::resource('salesOreder', olee\inventory\controllers\SalesOrderController::class);

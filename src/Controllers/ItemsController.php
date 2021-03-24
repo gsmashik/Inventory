@@ -12,6 +12,9 @@ class ItemsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+  
     public function index()
     {
         $output = array();
@@ -124,11 +127,22 @@ elseif(count($output)>1) {
      * @param  \App\Models\Items  $items
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($data)
     {
-        echo "jghj";
+     
+
+        return view('inventory::items.index',['find'=> $data]);
+        
     }
 
+
+    public function addbtn()
+    {
+
+        return "jghj";
+        // return view('inventory::items.index',['add'=> 345]);
+        
+    }
     /**
      * Show the form for editing the specified resource.
      *

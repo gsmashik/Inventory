@@ -4,10 +4,23 @@
 @extends('inventory::layouts.menubar')
 
 <!-- onsubmit="return confirm('Do you really want to submit the form?');" -->
-<form action="{{route('items.find')}}" method="post" id="myform" >
-@csrf
+
+@if(@isset($find  ) && $find == 'find') <form action="{{route('items.find')}}" method="post" id="myform" > @csrf @endisset
+
+@if(@isset($find  ) && $find == 'add') <form action="{{route('items.store')}}" method="post" id="myform" > @csrf @endisset
+
+
+
+
 <div class="card">
-<div class="card-header border">Item Master Data  </div>
+<div class="card-header border">Item Master Data   
+
+
+
+  <a href="{{route('items.fbtn',['btn' => 'find'])}}" class="btn btn-info btn-xs" role="button">Find</a>   
+  <a href="{{route('items.fbtn',['btn' => 'add'])}}" class="btn btn-info btn-xs" role="button">Add</a>   
+  
+  </div>
 
 <!--  সার্চের রেজাল্ট এর কয়টা রও (ROW) -->
 @isset($output){{  count($output) }} @endisset
@@ -30,7 +43,7 @@
                   <td>
                       <label class="form-check-label font-weight-lighter small"> Item Code </label>
                         @error('ItemCode')<i class="fa fa-asterisk fa-xs text-danger " aria-hidden="true"></i>  @enderror
-                                   
+                              
                   </td>
                   <td>
                       <input class="form-control" type="text" name="ItemCode" value="@isset($output[0]){{$output[0]->ItemCode }} @endisset" />
@@ -486,8 +499,9 @@
       
       <!-- Tabs Area End -->
       <div class="clearfix">
- 
-      <button class="btn btn-primary btn-2" >ADD</button>  
+
+      @if(@isset($find  ) && $find == 'add') <button class="btn btn-primary btn-2" >ADD</button>   @endisset
+      @if(@isset($find  ) && $find == 'find') <button class="btn btn-primary btn-2" >Find</button>   @endisset
       <br>
       @include('inventory::items.sessionmessage')
       @include('inventory::items.modal')
