@@ -3,11 +3,14 @@
 @section('content')
 @extends('inventory::layouts.menubar')
 
-<!-- onsubmit="return confirm('Do you really want to submit the form?');" -->
 
 @if(@isset($find  ) && $find == 'find') <form action="{{route('items.find')}}" method="post" id="myform" > @csrf @endisset
 
-@if(@isset($find  ) && $find == 'add') <form action="{{route('items.store')}}" method="post" id="myform" > @csrf @endisset
+@if(@isset($find  ) && $find == 'add')  
+<form action="{{route('items.store')}}" method="post" id="myform" onsubmit="swal('Are You Sure To Confirm  This Opreation!');" > @csrf @endisset
+
+@if(@isset($find  ) && $find == 'edit')
+ <form action="{{route('items.update',$output[0]->DocEntry )}}" method="post" id="myform" > @csrf @method('PUT') @endisset
 
 
 
@@ -17,13 +20,15 @@
 
 
 
-  <a href="{{route('items.fbtn',['btn' => 'find'])}}" class="btn btn-info btn-xs" role="button">Find</a>   
-  <a href="{{route('items.fbtn',['btn' => 'add'])}}" class="btn btn-info btn-xs" role="button">Add</a>   
-  
+  <a href="{{route('items.fbtn',['btn' => 'find'])}}" class="" ><span class=" fa fa-binoculars text-dark "></span></a>   
+  <a href="{{route('items.fbtn',['btn' => 'add'])}}" class="" ><span class=" fa fa-save text-dark  "></span></a>   
+
   </div>
 
 <!--  সার্চের রেজাল্ট এর কয়টা রও (ROW) -->
-@isset($output){{  count($output) }} @endisset
+@isset($moreoutput){{  count($moreoutput)}} @endisset
+
+<!-- @isset($output){{  count($output) }} @endisset -->
 @if(session()->has('message'))
     <div class="alert alert-success">
         {{ session()->get('message') }}
@@ -502,6 +507,8 @@
 
       @if(@isset($find  ) && $find == 'add') <button class="btn btn-primary btn-2" >ADD</button>   @endisset
       @if(@isset($find  ) && $find == 'find') <button class="btn btn-primary btn-2" >Find</button>   @endisset
+      @if(@isset($find  ) && $find == 'OK') <button class="btn btn-primary btn-2" >OK</button>   @endisset
+      @if(@isset($find  ) && $find == 'edit') <button class="btn btn-primary btn-2" >Edit</button>   @endisset
       <br>
       @include('inventory::items.sessionmessage')
       @include('inventory::items.modal')

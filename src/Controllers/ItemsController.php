@@ -20,7 +20,7 @@ class ItemsController extends Controller
         $output = array();
         $route= 'store';
         
-        return view('inventory::items.index',['output' => $output,'route'=> $route]);
+        return view('inventory::items.index',['output' => $output,'route'=> $route,'find'=> 'OK']);
 
     }
 
@@ -103,7 +103,7 @@ class ItemsController extends Controller
         
        
 if (count($output) == 1) {
-    return view('inventory::items.index',['output' => $output]);
+    return view('inventory::items.index',['output' => $output,'find'=> 'edit']);
 } elseif(count($output) == 0) {
     return view('inventory::items.index',['output' => $output]);
 }
@@ -127,22 +127,30 @@ elseif(count($output)>1) {
      * @param  \App\Models\Items  $items
      * @return \Illuminate\Http\Response
      */
-    public function show($data)
+    public function show($id)
     {
      
-
-        return view('inventory::items.index',['find'=> $data]);
+        if ($id == 'edit') {
+            $output = array();
+            $where = array('DocEntry' => $id);
+            $output[0] = Items::where($where)->first();
+    return $output[0];
+            // if (count($output) == 1) {
+            //     return view('inventory::items.index',['output' => $output,'find'=> 'edit']);
+            // } elseif(count($output) == 0) {
+            //     return view('inventory::items.index',['output' => $output]);
+            // }
+            // elseif(count($output)>1) {
+            //     return view('inventory::items.index',['moreoutput' => $output,'find'=> 'edit']);
+            // }
+    
+        }
+        return view('inventory::items.index',['find'=> $id]);
         
     }
 
 
-    public function addbtn()
-    {
 
-        return "jghj";
-        // return view('inventory::items.index',['add'=> 345]);
-        
-    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -156,12 +164,12 @@ elseif(count($output)>1) {
         $output[0] = Items::where($where)->first();
 
         if (count($output) == 1) {
-            return view('inventory::items.index',['output' => $output]);
+            return view('inventory::items.index',['output' => $output,'find'=> 'edit']);
         } elseif(count($output) == 0) {
             return view('inventory::items.index',['output' => $output]);
         }
         elseif(count($output)>1) {
-            return view('inventory::items.index',['moreoutput' => $output]);
+            return view('inventory::items.index',['moreoutput' => $output,'find'=> 'edit']);
         }
 
     }
@@ -173,20 +181,16 @@ elseif(count($output)>1) {
      * @param  \App\Models\Items  $items
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,  $id)
     {
-        $output = array();
-        $where = array('DocEntry' => $id);
-        $output[0] =  Items::where($where)->first()->update(Request::all());
+        $data = $request->except(['_token','_method']);
+        Items::where('DocEntry', '=', $id)->update($data);
 
-        if (count($output) == 1) {
-            return view('inventory::items.index',['output' => $output]);
-        } elseif(count($output) == 0) {
-            return view('inventory::items.index',['output' => $output]);
-        }
-        elseif(count($output)>1) {
-            return view('inventory::items.index',['moreoutput' => $output]);
-        }
+        // $where = array('DocEntry' => $id);
+        // $items  = Items::where($where)->first();
+        // $items->update($request->all());
+        return redirect()->route('items.index')->with('success', 'Opreation SuccessFull ');
+
     }
 
     /**
