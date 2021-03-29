@@ -19,12 +19,13 @@
 
                           <th>#</th>
                            
-                            <th>Date</th>
+                            <th>Date  @error('Date.*')<i class="fa fa-exclamation-triangle fa-xs text-danger " aria-hidden="true"></i>  @enderror</th>
                             <th>Purpose</th>
                             <th>Quantity                              @error('Quantity.*')<i class="fa fa-exclamation-triangle fa-xs text-danger " aria-hidden="true"></i>  @enderror
  </th>
+                            <th>applyby</th>
                             <th>Remarks</th>
-                       
+                            
                        
                     </thead>
                     <tbody>
@@ -47,9 +48,12 @@
 
                             </td>
                             <td>
+                              <input class="form-control" type="text" name="applyby[]" />
+                          </td>
+                            <td>
                               <input class="form-control" type="text" name="Remarks[]" />
                           </td>
-            
+
                         </tr>
                       
                     </tbody>
@@ -64,6 +68,40 @@
 
 </form>  
 
+
+<table class="table   table-bordered ">
+    <thead class="">
+        <tr>
+            <th>#</th>
+            <th>Date</th>
+        <th>Purpose</th>
+        <th>Amount</th>
+        <th>ApplyBy</th>
+        <th>Remarks</th>
+        <th>Status </th>
+        
+        </tr>
+    </thead>
+    <tbody>
+    @foreach($moneyreceipt as $key => $data  )
+        <tr>
+        <td></td>
+        <td>{{$data->Date}}</td>
+        <td>{{$data->Purpose}}</td>
+        <td>{{$data->Quantity}}</td>
+        <td>{{$data->ApplyBy}}</td>
+        <td>{{$data->Remarks}}</td>
+        <td>{{$data->approved}}</td>
+        </tr>
+
+        @endforeach
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>#</th>
+        </tr>
+    </tfoot>
+</table>
 @include('inventory::layouts.sessionmessage')
  @endsection
 

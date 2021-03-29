@@ -20,7 +20,9 @@ class MoneyReceiptController extends Controller
      */
     public function index()
     {
-        return view('inventory::MoneyReceipt.index');
+        $data['moneyreceipt'] = MoneyReceipt::all();
+       
+        return view('inventory::MoneyReceipt.index',$data);
     }
 
     /**
@@ -46,9 +48,13 @@ class MoneyReceiptController extends Controller
            
            $validatedData = $request->validate([
             "Quantity.*"  => "required|numeric|min:1",
+            "Date.*"  => "required|min:1",
            ],
 
-           [ 'Quantity.required' => '<i class="fas fa-exclamation-triangle"></i>', 'Quantity.numeric' => '<i class="fas fa-exclamation-triangle"></i>']
+           [ 'Quantity.required' => '<i class="fa fa-exclamation-triangle"></i>',
+            'Quantity.numeric' => '<i class="fa fa-exclamation-triangle"></i>',
+            'Date.required' => '<i class="fa fa-exclamation-triangle"></i>'
+            ]
         );
 
         $data = $request->except(['_token']);

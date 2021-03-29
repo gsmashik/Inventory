@@ -15,6 +15,15 @@ class CreateMoneyReceiptsTable extends Migration
     {
         Schema::create('money_receipts', function (Blueprint $table) {
             $table->id();
+            $table->string('Date');
+            $table->string('Purpose');
+            
+            $table->decimal('Quantity', $precision = 8, $scale = 2);
+            $table->string('Remarks');
+            $table->string('applyby');
+
+            $table->boolean('approved')->default(false);
+
             $table->timestamps();
         });
     }
