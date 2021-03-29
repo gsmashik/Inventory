@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Olee\Inventory\Controllers\SalesOrderController; 
 use Olee\Inventory\Controllers\ItemsController; 
+use Olee\Inventory\Controllers\MoneyReceiptController; 
 
 Route::get('test', 'olee\inventory\controllers\ItemsController@index');
 
@@ -17,13 +18,18 @@ Route::group(['middleware' => ['web']], function () {
     })->name('find');
 
 
-    Route::resource('items', olee\inventory\controllers\ItemsController::class);
+    Route::resource('items', Olee\Inventory\Controllers\ItemsController::class);
     Route::post('items/find', [ItemsController::class, 'find'])->name('items.find');
     Route::get('items/{btn}', [ItemsController::class, 'show'])->name('items.fbtn');
 
 
-    Route::resource('salesOreder', olee\inventory\controllers\SalesOrderController::class);
+    Route::resource('salesOreder', Olee\Inventory\Controllers\SalesOrderController::class);
     Route::post('salesOreder/search', [SalesOrderController::class, 'search'])->name('salesOreder.find');
+
+
+
+
+    Route::resource('moneyreceipt', Olee\Inventory\Controllers\MoneyReceiptController::class);
 
 });
 

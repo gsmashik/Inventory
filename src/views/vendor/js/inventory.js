@@ -13,8 +13,16 @@ $(document).on('click', '#addRowButton', function() {
 
 
 
+ 
+ 
+/* 
+ Datepicker Multiple Input Field 
+ */
 
 
+ $('.datepicker').each(function(){
+    $(this).datepicker();
+});
   
 /* 
   For Modal Open
@@ -42,12 +50,7 @@ $('.itemrow').DataTable({
 
 
 
-/* 
- Datepicker Multiple Input Field 
- */
-$('.datepick').each(function(){
-    $(this).datepicker();
-});
+
 
 
 // For Data Table

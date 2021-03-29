@@ -7,7 +7,13 @@
 @if(@isset($find  ) && $find == 'find') <form action="{{route('items.find')}}" method="post" id="myform" > @csrf @endisset
 
 @if(@isset($find  ) && $find == 'add')  
-<form action="{{route('items.store')}}" method="post" id="myform" onsubmit="swal('Are You Sure To Confirm  This Opreation!');" > @csrf @endisset
+<form action="{{route('items.store')}}" method="post" id="myform" onsubmit="Swal.fire({
+  title: 'Error!',
+  text: 'Do you want to continue',
+  icon: 'error',
+  confirmButtonText: 'Cool'
+})"
+> @csrf @endisset
 
 @if(@isset($find  ) && $find == 'edit')
  <form action="{{route('items.update',$output[0]->DocEntry )}}" method="post" id="myform" > @csrf @method('PUT') @endisset
@@ -93,7 +99,7 @@
                   </td>
                   <td>
                       <div class="custom-control custom-checkbox">
-                          <input type="checkbox" class="custom-control-input" name="SellItem" id="SellItem" value="@isset($output[0]){{$output[0]->ItmsGrpCod }} @endisset"/>
+                          <input type="checkbox" class="custom-control-input" name="SellItem" id="SellItem" value="@isset($output[0]){{$output[0]->SellItem }} @endisset"   />
                           <label class="custom-control-label font-weight-lighter small" for="SellItem">Sales Item</label>
                       </div>
                   </td>
@@ -510,8 +516,8 @@
       @if(@isset($find  ) && $find == 'OK') <button class="btn btn-primary btn-2" >OK</button>   @endisset
       @if(@isset($find  ) && $find == 'edit') <button class="btn btn-primary btn-2" >Edit</button>   @endisset
       <br>
-      @include('inventory::items.sessionmessage')
-      @include('inventory::items.modal')
+      @include('inventory::layouts.sessionmessage')
+      @include('inventory::layouts.modal')
 
 
       </div>

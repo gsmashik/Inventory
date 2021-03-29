@@ -74,6 +74,11 @@ class ItemsController extends Controller
 
     public function find(Request $request)
     {
+
+        try {
+
+                 
+
         $output = array();
         $data = $request->except(['_token']);
 
@@ -111,13 +116,15 @@ elseif(count($output)>1) {
     return view('inventory::items.index',['moreoutput' => $output]);
 }
 
+         
+         } catch (\Exception $e) {
+         
+           return redirect()->route('items.index')->with('error', 'ISome Error Have ');
+        
+         }
+ 
 
-        // echo $output[0]['DocEntry'];
-        // 
-        // $mould = Items::where('Itemcode', '=', "as")->get();
-        // return $output;
-        // return view('inventory::items.index', ['output' => $output]);
-        // return redirect()->route('items.index')->compact(output);
+   
 
     }
 

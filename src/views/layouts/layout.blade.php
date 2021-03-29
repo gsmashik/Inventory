@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="{{asset('olee/inventory/css/style.css')}}">
 <link rel="stylesheet" href="{{asset('olee/inventory/css/menubar.css')}}">
 <link rel="stylesheet" href="{{asset('olee/inventory/css/tabs.css')}}">
-
+<link rel="stylesheet" href="{{asset('olee/inventory/css/color.css')}}">
  @yield('css')
 </head>
 <body>
@@ -36,7 +36,14 @@
 <script src="{{ asset('olee/inventory/js/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('olee/inventory/js/dataTables.colReorder.min.js') }}"></script>
 <script src="{{ asset('olee/inventory/js/dataTables.rowReorder.min.js') }}"></script>
+<script src="{{ asset('olee/inventory/js/jquery-ui.min.js') }}"></script>
 <script src="{{ asset('olee/inventory/js/sweetalert.min.js') }}"></script>
+
+      
+    <script src=
+"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" >
+    </script>
+
 
 <!-- Scripts -->
     <script src="{{ asset('olee/inventory/js/inventory.js') }}" defer></script>
