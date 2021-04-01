@@ -43,17 +43,19 @@
            
            
           @if ($errors->any())
-          <div class="alert alert-danger sticky-top alert alert-dismissible">
-          <button class="btn btn-danger" data-toggle="collapse" data-target="#demo">See Error Details  </button>
-<div id="demo" class="collapse">
+          <div class="alert bg-danger sticky-top alert alert-dismissible">
+            <i  class=" btn-danger" data-toggle="collapse" data-target="#demo">See Error Details  </i>
+
+            <div id="demo" class="collapse">
 <ul>
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
             @endforeach
         </ul>
 </div>
-              <button type="button" class="close" data-dismiss="alert">×</button> 
-              Please check the form below for errors
+ <button type="button" class="close" data-dismiss="alert">×</button> 
+              Please check the form below for errors 
+              
           </div>
           @endif
       </div>

@@ -10,6 +10,8 @@ namespace Olee\Inventory\Controllers;
 use Olee\Inventory\Models\MoneyReceipt;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+// use Mavinoo\LaravelBatch as Batch;
 
 class MoneyReceiptController extends Controller
 {
@@ -35,7 +37,86 @@ class MoneyReceiptController extends Controller
         //
     }
 
+    public function find(Request $request)
+    {
+
+        $data['moneyreceipt']   = MoneyReceipt::whereBetween('date',[$request->Date1,$request->Date2])
+
+        ->get();
+
+        return view('inventory::MoneyReceipt.index',$data);
+    
+    }
+
+
+
+    public function updateall(Request $request){
+
+           
+        $moneyreceiptrow = new MoneyReceipt;
+
+     $data = $request->except(['_token']);
+     $row = array();
+     $mydata = array();
+
+       
+    foreach ($data as $key => $value) {
+        if (is_array($value)) {
+            for ($i=0; $i <count($value); $i++) { 
+                $row[$key][] = $value[$i];
+        
+            }
+            }
+    
+        else{
+           
+           
+        }
+
+
+    }
+    for ($i=0; $i < count($row['id']) ; $i++) { 
+
+        foreach($row as $key => $value){
+           
+            
+            
+                
+          
+            
+                $mydata  [$i] [$key] = $row[$key ][$i];
+           
+           
+        }
+       
+        
+        
+}
+return $mydata;
+}
+
     /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\MoneyReceipt  $moneyReceipt
+     * @return \Illuminate\Http\Response
+     */
+    public function show(MoneyReceipt $moneyReceipt)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\MoneyReceipt  $moneyReceipt
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(MoneyReceipt $moneyReceipt)
+    {
+        //
+    }
+   /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -101,29 +182,6 @@ try {
 
           
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\MoneyReceipt  $moneyReceipt
-     * @return \Illuminate\Http\Response
-     */
-    public function show(MoneyReceipt $moneyReceipt)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\MoneyReceipt  $moneyReceipt
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(MoneyReceipt $moneyReceipt)
-    {
-        //
-    }
-
     /**
      * Update the specified resource in storage.
      *

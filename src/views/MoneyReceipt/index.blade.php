@@ -23,7 +23,7 @@
                             <th>Purpose</th>
                             <th>Quantity                              @error('Quantity.*')<i class="fa fa-exclamation-triangle fa-xs text-danger " aria-hidden="true"></i>  @enderror
  </th>
-                            <th>applyby</th>
+                            <th>ApplyBy</th>
                             <th>Remarks</th>
                             
                        
@@ -69,6 +69,35 @@
 </form>  
 
 
+<div class="card">
+    <div class="card-header">
+        <form action="{{route('moneyreceipt.find')}}" method="post" >
+            @csrf
+
+            <div class="form-group">
+                <div class="col-sm-4 pull-left">
+                    <input class="form-control datepicker" type="text" name="Date1" />
+                </div>               
+                
+                <div class="col-sm-4 pull-left">
+            <input class="form-control datepicker" type="text" name="Date2" />
+                </div>
+
+
+                <div class="col-sm-4 pull-left">
+                    <button type="submit" class=" btn-primary border  rounded-0" style="margin-right: 5px">Get Data</button>
+                </div>
+            </div>
+            
+
+
+        </form>
+    </div>
+
+  
+</div>
+<form action="{{route('moneyreceipt.updateall')}}" method="post" >
+    @csrf
 <table class="table   table-bordered ">
     <thead class="">
         <tr>
@@ -83,25 +112,31 @@
         </tr>
     </thead>
     <tbody>
+
     @foreach($moneyreceipt as $key => $data  )
+   
         <tr>
-        <td></td>
-        <td>{{$data->Date}}</td>
-        <td>{{$data->Purpose}}</td>
-        <td>{{$data->Quantity}}</td>
-        <td>{{$data->ApplyBy}}</td>
-        <td>{{$data->Remarks}}</td>
-        <td>{{$data->approved}}</td>
+        <td class="text-center">{{$key+1}} <input class=" invisible" style="width: 0px;"  type="text" value="{{$data->id}}" name="id[]"   /></td>
+        <td><input class="form-control datepicker"  type="text" value="{{$data->Date}}" name="Date[]"  /></td>
+        <td><input class="form-control "  type="text" value="{{$data->Purpose}}" name="Purpose[{{$data->id}}]" disabled /></td>
+        <td><input class="form-control "  type="text" value="{{$data->Quantity}}" name="Quantity[{{$data->id}}]" disabled /></td>
+        <td><input class="form-control "  type="text" value="{{$data->ApplyBy}}" name="ApplyBy[{{$data->id}}]" disabled /></td>
+        <td><input class="form-control "  type="text" value="{{$data->Remarks}}" name="Remarks[{{$data->id}}]" disabled /></td>
+
+     
+        <td>
+        <input type="hidden" name="approved[]" value="0">
+        <input type="checkbox" value="1" name="approved[]">          </td>
         </tr>
 
         @endforeach
     </tbody>
-    <tfoot>
-        <tr>
-            <th>#</th>
-        </tr>
-    </tfoot>
+
 </table>
+<div class="text-center">
+    <button type="submit" class="btn btn-primary border  rounded-0" style="margin-right: 5px">Update</button>
+</form>
+</div>
 @include('inventory::layouts.sessionmessage')
  @endsection
 

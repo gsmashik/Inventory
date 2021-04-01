@@ -30,6 +30,8 @@ Route::group(['middleware' => ['web']], function () {
 
 
     Route::resource('moneyreceipt', Olee\Inventory\Controllers\MoneyReceiptController::class);
+    Route::post('moneyreceipt/find', [MoneyReceiptController::class, 'find'])->name('moneyreceipt.find');
+    Route::post('moneyreceipt/updateall', [MoneyReceiptController::class, 'updateall'])->name('moneyreceipt.updateall');
 
 });
 
