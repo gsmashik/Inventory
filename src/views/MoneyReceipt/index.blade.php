@@ -2,7 +2,7 @@
 
 @section('content')
 @extends('inventory::layouts.menubar')
-<form action="{{route('moneyreceipt.store')}}" method="post" >
+<form action="{{route('moneyreceipt.store')}}" method="post" id="form" >
                     @csrf
 
 <div class="card">
@@ -125,8 +125,11 @@
 
      
         <td>
-        <input type="hidden" name="approved[]" value="0">
-        <input type="checkbox" value="1" name="approved[]">          </td>
+<label><input name="approved[]" type="checkbox"  /> checkbox</label>
+     
+       
+               
+         </td>
         </tr>
 
         @endforeach

@@ -63,7 +63,7 @@ class MoneyReceiptController extends Controller
     foreach ($data as $key => $value) {
         if (is_array($value)) {
             for ($i=0; $i <count($value); $i++) { 
-                $row[$key][] = $value[$i];
+                $row[$key][] =  $value[$i];
         
             }
             }
@@ -84,7 +84,9 @@ class MoneyReceiptController extends Controller
                 
           
             
-                $mydata  [$i] [$key] = $row[$key ][$i];
+                $mydata  [$i] [$key] = (isset($row[$key ][$i]))?$row[$key ][$i]:"0";
+                
+                
            
            
         }
@@ -92,7 +94,26 @@ class MoneyReceiptController extends Controller
         
         
 }
-return $mydata;
+
+
+
+try {
+
+    for ($i=0; $i <count($mydata) ; $i++) { 
+        $moneyreceipt = MoneyReceipt::find($mydata[$i]['id']);
+        $moneyreceipt->update($mydata[$i]);
+    
+       
+    }
+ 
+    return redirect()->route('moneyreceipt.index')->with('success', 'Operation completed successfully  [Message 200-48]');
+ 
+ } catch (\Exception $e) {
+ 
+   return redirect()->route('moneyreceipt.index')->with('error', 'ISome Error Have ');
+
+ }
+// return $mydata;
 }
 
     /**
@@ -171,7 +192,7 @@ try {
 
     $moneyreceiptrow->save();
  
-    return redirect()->route('moneyreceipt.index')->with('success', 'Item Added Successfully');
+    return redirect()->route('moneyreceipt.index')->with('success', 'Operation completed successfully  [Message 200-48]');
  
  } catch (\Exception $e) {
  
