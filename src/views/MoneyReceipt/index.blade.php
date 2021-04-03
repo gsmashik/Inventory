@@ -125,7 +125,7 @@
 
      
         <td>
-<label><input name="approved[]" type="checkbox"  /> checkbox</label>
+<label><input name="approved[]" type="checkbox"  {{  ($data->approved == 'on' ? ' checked' : '') }} /> checkbox</label>
      
        
                
