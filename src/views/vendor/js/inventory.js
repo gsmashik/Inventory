@@ -11,9 +11,19 @@ $(document).on('click', '#addRowButton', function() {
 });
 
 
+           
+$('input[type="checkbox"]').on('change', function(e){
+    if($(this).prop('checked'))
+    {
+        $(this).next($('input[type=hidden]')).removeAttr('name');
+        
+    } else {
+        $(this).next($('input[type=hidden]')).value('1');
+    }
+});
 
 
- 
+
  
 /* 
  Datepicker Multiple Input Field 
@@ -21,7 +31,7 @@ $(document).on('click', '#addRowButton', function() {
 
 
  $('.datepicker').each(function(){
-    $(this).datepicker();
+    $(this).datepicker({dateFormat: "yy-mm-dd"});
 });
   
 /* 

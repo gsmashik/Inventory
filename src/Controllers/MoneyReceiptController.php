@@ -52,7 +52,8 @@ class MoneyReceiptController extends Controller
 
     public function updateall(Request $request){
 
-           
+        // $data = $request->except(['_token']);
+        // return $data;
         $moneyreceiptrow = new MoneyReceipt;
 
      $data = $request->except(['_token']);
@@ -84,7 +85,7 @@ class MoneyReceiptController extends Controller
                 
           
             
-                $mydata  [$i] [$key] = (isset($row[$key ][$i]))?$row[$key ][$i]:"0";
+                $mydata  [$i] [$key] = (isset($row[$key ][$i]))?$row[$key ][$i]:"";
                 
                 
            

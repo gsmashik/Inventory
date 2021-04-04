@@ -117,7 +117,7 @@
    
         <tr>
         <td class="text-center">{{$key+1}} <input class=" invisible" style="width: 0px;"  type="text" value="{{$data->id}}" name="id[]"   /></td>
-        <td><input class="form-control datepicker"  type="text" value="{{$data->Date}}" name="Date[]"  /></td>
+        <td><input class="form-control datepicker"  type="text" value="{{$data->Date}}" name="Date[]" disabled /></td>
         <td><input class="form-control "  type="text" value="{{$data->Purpose}}" name="Purpose[{{$data->id}}]" disabled /></td>
         <td><input class="form-control "  type="text" value="{{$data->Quantity}}" name="Quantity[{{$data->id}}]" disabled /></td>
         <td><input class="form-control "  type="text" value="{{$data->ApplyBy}}" name="ApplyBy[{{$data->id}}]" disabled /></td>
@@ -125,9 +125,11 @@
 
      
         <td>
-<label><input name="approved[]" type="checkbox"  {{  ($data->approved == 'on' ? ' checked' : '') }} /> checkbox</label>
+
+<input name="approved[]" type="checkbox"   /> checkbox</label>
      
-       
+<input type="hidden" name="approved[]" value="">
+
                
          </td>
         </tr>
@@ -144,4 +146,15 @@
  @endsection
 
 @section('js')
+<script>
+// $('input[type="checkbox"]').on('change', function(e){
+//         if($(this).prop('checked'))
+//         {
+//             $(this).next($('input[type=hidden]')).removeAttr('name');
+            
+//         } else {
+//             $(this).next($('input[type=hidden]')).value('1');
+//         }
+// });
+</script>
 @endsection
