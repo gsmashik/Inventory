@@ -7,7 +7,7 @@
 
 <div class="card">
 
-  <div class="card-header">Money Receipt</div>
+  <div class="card-header">Money Receipt {{ Auth::user()->id }}</div>
 
   <div class="card-body">
                  
