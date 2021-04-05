@@ -23,6 +23,10 @@ $('input[type="checkbox"]').on('change', function(e){
 });
 
 
+    $('input[type=checkbox]:checked').each(function(index){
+        $(this).next($('input[type=hidden]')).removeAttr('name');
+});
+
 
  
 /* 

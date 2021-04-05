@@ -153,9 +153,9 @@
                   @if(isset(Auth::user()->email) && Auth::user()->name == "sir")
         <td>
 
-<input name="approved[]" type="checkbox"   /> checkbox</label>
+<input name="approved[]" type="checkbox"  {{  ($data->approved == 'on' ? ' checked' : '') }} /> checkbox</label>
      
-<input type="hidden" name="approved[]" value="">
+<input type="hidden" name="approved[]"   value="">
 
                
          </td>
@@ -177,14 +177,11 @@
 
 @section('js')
 <script>
-// $('input[type="checkbox"]').on('change', function(e){
-//         if($(this).prop('checked'))
-//         {
-//             $(this).next($('input[type=hidden]')).removeAttr('name');
-            
-//         } else {
-//             $(this).next($('input[type=hidden]')).value('1');
-//         }
-// });
+
+
+
+
+
+
 </script>
 @endsection
