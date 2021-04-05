@@ -2,15 +2,21 @@
 
 @section('content')
 @extends('inventory::layouts.menubar')
+@if(isset(Auth::user()->email) && Auth::user()->name == "account")
+  <!-- {{ Auth::user()->name }} -->
+
 <form action="{{route('moneyreceipt.store')}}" method="post" id="form" >
                     @csrf
 
 <div class="card">
 
-  <div class="card-header">Money Receipt {{ Auth::user()->id }}</div>
+  <div class="card-header">Money Receipt 
+
+
+</div>
 
   <div class="card-body">
-                 
+     
   <table class="table   table-bordered itemrow" id="rowtable">
                 
              
@@ -25,6 +31,7 @@
  </th>
                             <th>ApplyBy</th>
                             <th>Remarks</th>
+                     
                             
                        
                     </thead>
@@ -67,8 +74,8 @@
 </div>
 
 </form>  
-
-
+@endif   
+@if(isset(Auth::user()->email) && Auth::user()->name == "sir")
 <div class="card">
     <div class="card-header">
         <form action="{{route('moneyreceipt.find')}}" method="post" >
@@ -96,8 +103,12 @@
 
   
 </div>
+
+
+
 <form action="{{route('moneyreceipt.updateall')}}" method="post" >
     @csrf
+    @endif  
 <table class="table   table-bordered ">
     <thead class="">
         <tr>
@@ -107,8 +118,10 @@
         <th>Amount</th>
         <th>ApplyBy</th>
         <th>Remarks</th>
+        <th>Approved Status</th>
+        @if(isset(Auth::user()->email) && Auth::user()->name == "sir")
         <th>Status </th>
-        
+        @endif  
         </tr>
     </thead>
     <tbody>
@@ -122,8 +135,22 @@
         <td><input class="form-control "  type="text" value="{{$data->Quantity}}" name="Quantity[{{$data->id}}]" disabled /></td>
         <td><input class="form-control "  type="text" value="{{$data->ApplyBy}}" name="ApplyBy[{{$data->id}}]" disabled /></td>
         <td><input class="form-control "  type="text" value="{{$data->Remarks}}" name="Remarks[{{$data->id}}]" disabled /></td>
+        <td>
+        {!! !empty($data->approved) ? '<div class=" bg-success ">
+    <strong>Approved</strong>
+ 
+</div>' : '<div class=" bg-danger">
+    <strong>UnApproved</strong>
+ 
+</div>' !!}
+                
+                  </td>
 
+        
+        
      
+       
+                  @if(isset(Auth::user()->email) && Auth::user()->name == "sir")
         <td>
 
 <input name="approved[]" type="checkbox"   /> checkbox</label>
@@ -132,15 +159,18 @@
 
                
          </td>
+         @endif  
         </tr>
 
         @endforeach
     </tbody>
 
 </table>
+@if(isset(Auth::user()->email) && Auth::user()->name == "sir")
 <div class="text-center">
     <button type="submit" class="btn btn-primary border  rounded-0" style="margin-right: 5px">Update</button>
 </form>
+@endif  
 </div>
 @include('inventory::layouts.sessionmessage')
  @endsection

@@ -26,19 +26,44 @@
 			<a href="#" class="nav-item nav-link active"><i class="fa fa-home"></i><span>Home</span></a>
 
 
+ <!-- Authentication Links -->
+ @guest
+                            @if (Route::has('login'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
+                            @endif
+                            
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+								<img src="https://www.tutorialrepublic.com/examples/images/avatar/3.jpg" class="avatar" alt="Avatar"> 
+									{{ Auth::user()->name }}
+                                </a>
 
-
-
-            <div class="nav-item dropdown">
-				<a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle user-action" aria-expanded="false"><img src="https://www.tutorialrepublic.com/examples/images/avatar/3.jpg" class="avatar" alt="Avatar"> Olee Ahmmed <b class="caret"></b></a>
-				<div class="dropdown-menu">
-					<a href="#" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a>
-					<a href="#" class="dropdown-item"><i class="fa fa-calendar-o"></i> Calendar</a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+									<a href="#" class="dropdown-item"><i class="fa fa-user"></i> Profile</a>
+					<a href="#" class="dropdown-item"><i class="fa fa-calendar"></i> Calendar</a>
 					<a href="#" class="dropdown-item"><i class="fa fa-sliders"></i> Settings</a>
-					<div class="divider dropdown-divider"></div>
-					<a href="#" class="dropdown-item"><i class="material-icons"></i> Logout</a>
-				</div>
-			</div>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+
+
+  
 		</div>
 	</div>
 </nav>
