@@ -5,7 +5,6 @@ use Olee\Inventory\Controllers\SalesOrderController;
 use Olee\Inventory\Controllers\ItemsController; 
 use Olee\Inventory\Controllers\MoneyReceiptController; 
 
-Route::get('test', 'olee\inventory\controllers\ItemsController@index');
 
 
 Route::group(['middleware' => ['web']], function () {

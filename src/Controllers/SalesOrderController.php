@@ -85,9 +85,9 @@ try {
     $sales->save();
     return redirect()->route('salesOreder.index')->with('success', 'Item Added Successfully');
  
- } catch (\Exception $e) {
- 
-   return redirect()->route('salesOreder.index')->with('error', 'ISome Error Have ');
+ } catch (Throwable | Exception $e) {
+
+   return redirect()->route('salesOreder.index')->with('error',"$e");
 
  }
 
