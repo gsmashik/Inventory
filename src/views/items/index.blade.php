@@ -57,8 +57,9 @@
                               
                   </td>
                   <td>
-                      <input class="form-control" type="text" name="ItemCode" value="@isset($output[0]){{$output[0]->ItemCode }} @endisset" />
+                      <input class="itemcode form-control typeahead" type="text" data-provide="typeahead" name="ItemCode" value="@isset($output[0]){{$output[0]->ItemCode }} @endisset" />
                   </td>
+				  
                   <td>
                       <label class="form-check-label font-weight-lighter small"> Bar Code </label>
                   </td>

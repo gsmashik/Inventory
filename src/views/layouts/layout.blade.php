@@ -19,6 +19,7 @@
 <link rel="stylesheet" href="{{asset('public/olee/inventory/css/menubar.css')}}">
 <link rel="stylesheet" href="{{asset('public/olee/inventory/css/tabs.css')}}">
 <link rel="stylesheet" href="{{asset('public/olee/inventory/css/color.css')}}">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
  @yield('css')
 </head>
 <body>
@@ -43,10 +44,14 @@
     <script src=
 "https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" >
     </script>
-
-
+    <script src="{{ asset('public/olee/inventory/js/bootstrap3-typeahead.min.js') }}" ></script>
 <!-- Scripts -->
     <script src="{{ asset('public/olee/inventory/js/inventory.js') }}" defer></script>
+
+
+
+
+
 @yield('js') 
 </body>
 </html>

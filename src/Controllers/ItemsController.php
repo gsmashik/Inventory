@@ -4,6 +4,7 @@ namespace Olee\Inventory\Controllers;
 use Olee\Inventory\Models\Items;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
  
 class ItemsController extends Controller
 {
@@ -21,6 +22,41 @@ class ItemsController extends Controller
         $route= 'store';
         
         return view('inventory::items.index',['output' => $output,'route'=> $route,'find'=> 'OK']);
+
+    }
+	
+	
+	    public function autocomplete(Request $request)
+
+    {
+
+
+
+      $input = $request->all();
+
+
+        $result = Items::select("ItemCode")
+
+                ->where("ItemCode","LIKE","%{$request->get('query')}%")
+
+                ->get();
+
+   
+  $dataModified = array();
+     foreach ($result as $data)
+     {
+       $dataModified[] = $data->ItemCode;
+     }
+
+    return response()->json($dataModified);
+	
+	
+        //return json_encode($result);
+		
+		// response()->json($result);
+
+    
+
 
     }
 

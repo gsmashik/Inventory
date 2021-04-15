@@ -11,6 +11,9 @@ $(document).on('click', '#addRowButton', function() {
 });
 
 
+
+
+
            
 $('input[type="checkbox"]').on('change', function(e){
     if($(this).prop('checked'))

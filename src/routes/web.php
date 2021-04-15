@@ -20,7 +20,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::resource('items', Olee\Inventory\Controllers\ItemsController::class);
     Route::post('items/find', [ItemsController::class, 'find'])->name('items.find');
     Route::get('items/{btn}', [ItemsController::class, 'show'])->name('items.fbtn');
-
+	Route::get('/autocomplete', [ItemsController::class, 'autocomplete'])->name('autocomplete');
 
     Route::resource('salesOreder', Olee\Inventory\Controllers\SalesOrderController::class);
     Route::post('salesOreder/search', [SalesOrderController::class, 'search'])->name('salesOreder.find');
