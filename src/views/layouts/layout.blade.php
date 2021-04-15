@@ -44,12 +44,31 @@
     <script src=
 "https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" >
     </script>
-    <script src="{{ asset('public/olee/inventory/js/bootstrap3-typeahead.min.js') }}" ></script>
-<!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script><!-- Scripts -->
     <script src="{{ asset('public/olee/inventory/js/inventory.js') }}" defer></script>
 
 
+<script>
+      var path = "{{ route('autocomplete') }}";
 
+    $('input.itemcode').typeahead({
+
+        source:  function (query, process) {
+
+        return $.get(path, { query: query }, function (data) {
+
+                return process(data);
+				
+
+            }
+			);
+
+        }
+
+
+    }
+	);
+</script>
 
 
 @yield('js') 

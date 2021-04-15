@@ -12,7 +12,25 @@ $(document).on('click', '#addRowButton', function() {
 
 
 
+   var path = "{{ route('autocomplete') }}";
 
+    $('input.itemcode').typeahead({
+
+        source:  function (query, process) {
+
+        return $.get(path, { query: query }, function (data) {
+
+                return process(data);
+				
+
+            }
+			);
+
+        }
+
+
+    }
+	);
 
            
 $('input[type="checkbox"]').on('change', function(e){
