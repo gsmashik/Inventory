@@ -12,27 +12,10 @@ $(document).on('click', '#addRowButton', function() {
 
 
 
-   var path = "{{ route('autocomplete') }}";
-
-    $('input.itemcode').typeahead({
-
-        source:  function (query, process) {
-
-        return $.get(path, { query: query }, function (data) {
-
-                return process(data);
-				
-
-            }
-			);
-
-        }
 
 
-    }
-	);
 
-           
+// checkbox hidden field           
 $('input[type="checkbox"]').on('change', function(e){
     if($(this).prop('checked'))
     {
@@ -54,10 +37,21 @@ $('input[type="checkbox"]').on('change', function(e){
  Datepicker Multiple Input Field 
  */
 
-
+var d = new Date();
+var today = new Date();
+           var currMonth = d.getMonth();
+           var currYear = d.getFullYear();
+           var startDate = new Date(currYear, currMonth, 1);
+		   
+		   
  $('.datepicker').each(function(){
-    $(this).datepicker({dateFormat: "yy-mm-dd"});
+    $(this).datepicker({dateFormat: "yy-mm-dd",});
 });
+ $('.datepicker').each(function(){
+    $(this).datepicker("setDate", today);
+});
+
+
   
 /* 
   For Modal Open

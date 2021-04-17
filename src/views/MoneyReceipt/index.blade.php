@@ -131,7 +131,8 @@
         <tr>
         <td class="text-center">{{$key+1}} <input class=" invisible" style="width: 0px;"  type="text" value="{{$data->id}}" name="id[]"   /></td>
         <td><input class="form-control datepicker"  type="text" value="{{$data->Date}}" name="Date[]" disabled /></td>
-        <td><input class="form-control "  type="text" value="{{$data->Purpose}}" name="Purpose[{{$data->id}}]" disabled /></td>
+        <td><input class="form-control "  type="text" value="{{$data->Purpose}}" name="Purpose[{{$data->id}}]" @{{ onkeydown="return false;" }} 
+ /></td>
         <td><input class="form-control "  type="text" value="{{$data->Quantity}}" name="Quantity[{{$data->id}}]" disabled /></td>
         <td><input class="form-control "  type="text" value="{{$data->ApplyBy}}" name="ApplyBy[{{$data->id}}]" disabled /></td>
         <td><input class="form-control "  type="text" value="{{$data->Remarks}}" name="Remarks[{{$data->id}}]" disabled /></td>

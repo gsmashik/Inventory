@@ -9,10 +9,10 @@
     ],
     "license": "MIT",
     "minimum-stability": "dev",
-    "require": {},
+    "require": {laravel/ui:^2.4},
  
     "require-dev": {
-        "livewire/livewire": "^2.4.0@dev"
+        "laravel/ui:^2.4"
     },
     "autoload": {
         "psr-4": {

@@ -35,7 +35,7 @@ class ItemsController extends Controller
       $input = $request->all();
 
 
-        $result = Items::select("ItemCode")
+        $result = Items::select("ItemCode","ItemName" )
 
                 ->where("ItemCode","LIKE","%{$request->get('query')}%")
 
@@ -46,6 +46,7 @@ class ItemsController extends Controller
      foreach ($result as $data)
      {
        $dataModified[] = $data->ItemCode;
+
      }
 
     return response()->json($dataModified);

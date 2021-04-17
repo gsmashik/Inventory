@@ -49,7 +49,7 @@
 
 
 <script>
-      var path = "{{ route('autocomplete') }}";
+         var path = "{{ route('autocomplete') }}";
 
     $('input.itemcode').typeahead({
 
@@ -64,6 +64,7 @@
 			);
 
         }
+
 
 
     }
